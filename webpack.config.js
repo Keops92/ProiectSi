@@ -1,12 +1,14 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
 	entry: './app/app.js',
 	output: {
 		path: path.join(__dirname, '/build'),
-		filename: 'bundle.js'
+		filename: 'bundle-[hash].js'
 	},
+	devtool: 'source-map',
 	module: {
 		loaders: [
 			{ test: /\.html$/, loader: 'html' },
@@ -22,9 +24,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-	    new HtmlWebpackPlugin({template: 'app/main-page.ejs'})
-	],
-	externals: {
-		'ko': 'ko'
-  }
+	    new HtmlWebpackPlugin({template: 'app/main-page.ejs'}),
+	    new LiveReloadPlugin({appendScriptTag: true})
+	]
 };

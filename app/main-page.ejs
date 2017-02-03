@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Products</title>
+	<title>Proiect SI</title>
 </head>
 <body>
-	<div id="root" style="display: none" data-bind="visible: true">
-		<p>Liked: <span data-bind="text: likedCount"></span></p>
-		<p>Disliked: <span data-bind="text: dislikedCount"></span></p>
-		<p>All: <span data-bind="text: products().length"></span></p>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1840390689535443',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
 
-		<button data-bind="click: addProduct">Add a product</button>
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-		<ul data-bind="foreach: products">
-			<li>
-				<strong data-bind="text: name"></strong>
-				<like-or-dislike params="value: userRating"></like-or-dislike>
-			</li>
-		</ul>
-	</div>
-
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
-	<script src="build/bundle.js"></script>
+	<!-- ko component: 'root' -->
+    <!-- /ko -->
 </body>
 </html>

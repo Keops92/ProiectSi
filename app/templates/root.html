@@ -1,0 +1,15 @@
+<!-- ko if: isLoggedIn -->
+<!-- ko component: {
+        name: 'user-details',
+        params: {
+            logout: logout
+            }
+       }
+     -->
+<!-- /ko -->
+<!-- /ko -->
+
+
+<!-- ko ifnot: isLoggedIn -->
+<div class="login-button" data-bind="click: login"> Login</div>
+<!-- /ko -->
