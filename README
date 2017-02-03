@@ -1,0 +1,5 @@
+* Make sure you have npm installed
+* run "npm install"
+* run "npm run build"
+* run "npm run dev"
+* goto "localhost:8080"
