@@ -1,16 +1,29 @@
 import ko from 'knockout';
 import template from '../templates/user-details.html'
+import facebookService from '../services/facebook-service';
 
 function viewModel(params) {
     function logout() {
         params.logout();
     }
 
-    var memberDetails = ko.observable(null);
+    var name = ko.observable(null);
+    var pictureUrl = ko.observable(null);
+
+    facebookService.getMemberDetails(function (details) {
+        name(details.name);
+
+        facebookService.getMemberPicture(details.id,
+        function(imageDetails) {
+            pictureUrl(imageDetails.data.url)
+        })
+    });
+
 
     return {
         logout: logout,
-        memberDetails: memberDetails
+        name: name,
+        pictureUrl: pictureUrl
     }
 
 }

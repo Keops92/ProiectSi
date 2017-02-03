@@ -28,6 +28,10 @@ function logout(successCallback) {
 }
 
 
+function getMemberPicture(memberId, successCallback) {
+    FB.api('/' + memberId + '/picture', successCallback);
+}
+
 function getMemberDetails(detailsCallback) {
      FB.api('/me', detailsCallback);
 }
@@ -35,5 +39,6 @@ module.exports = {
     loggedIn: loggedIn,
     login: login,
     logout: logout,
-    getMemberDetails: getMemberDetails
+    getMemberDetails: getMemberDetails,
+    getMemberPicture: getMemberPicture
 }
