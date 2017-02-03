@@ -1,7 +1,12 @@
 body {
     background-color: #f2f2f2;
 }
-
+.user-details {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
 .login-button {
     width: 50px;
     height: 50px;
@@ -11,4 +16,45 @@ body {
     text-transform: uppercase;
     line-height: 50px;
     padding: 0 50px;
+}
+
+.feed-list {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    overflow-y: scroll;
+
+    .feed-item {
+        background-color: #f5f5ff;
+        width: 80%;
+        margin: 5px;
+        border: 1px solid black;
+    }
+}
+
+.likes-list {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    .item-flex-container {
+        width: 80%;
+        margin: 5px;
+        border: 1px solid black;
+        .item {
+                background-color: #f0f0ff;
+                display: flex;
+                flex-direction:row;
+                &.selected {
+                        background-color: white;
+                }
+                .name {
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    margin: 20px
+                }
+            }
+        }
+
 }

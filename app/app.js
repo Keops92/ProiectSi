@@ -3,3 +3,4 @@ import './components/root';
 import './styles/app.less';
 
 ko.applyBindings();
+window.ko = ko;

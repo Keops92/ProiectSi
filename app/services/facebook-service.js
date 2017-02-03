@@ -1,6 +1,10 @@
 
 function loggedIn(loggedInCallback, loggedOutCallback) {
-    window.FB.getLoginStatus(function(response) {
+    if (FB == null) {
+        loggedOutCallback();
+        return;
+    }
+    FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             loggedInCallback();
         } else if (response.status === 'not_authorized') {
@@ -19,6 +23,8 @@ function login(successCallback, failCallback) {
             } else {
                 failCallback();
             }
+        }, {
+            scope: 'user_likes,user_posts,read_custom_friendlists'
         }
     );
 }
@@ -32,6 +38,14 @@ function getMemberPicture(memberId, successCallback) {
     FB.api('/' + memberId + '/picture', successCallback);
 }
 
+function getFriendList(callback) {
+    FB.api('me/likes?fields=id,picture,name', callback);
+}
+
+function getMemberFeed(memberId, callback) {
+    FB.api('/' + memberId + '/feed', callback);
+}
+
 function getMemberDetails(detailsCallback) {
      FB.api('/me', detailsCallback);
 }
@@ -40,5 +54,7 @@ module.exports = {
     login: login,
     logout: logout,
     getMemberDetails: getMemberDetails,
-    getMemberPicture: getMemberPicture
+    getMemberPicture: getMemberPicture,
+    getFriendList: getFriendList,
+    getMemberFeed: getMemberFeed
 }

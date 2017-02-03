@@ -1,7 +1,37 @@
-<div class = "greeting" >
-    <span> Hello, </span>
-    <span data-bind="text: name"></span>
-</div>
-<img data-bind="attr:{'src': pictureUrl() }"/>
+<div class="user-details">
+    <div class="likes-list"  >
+        <div class="item-flex-container" >
+            <div class="item" data-bind="css:{ selected: selectedFriendId() == 'me'},click: selectMe">
+            <div class = "name" >
+                <span> Hello, </span>
+                <span data-bind="text: name"></span>
+            </div>
+            <img data-bind="attr:{'src': pictureUrl() }"/>
+        </div>
+    </div>
+        <!-- ko foreach: {data: friendList, as: 'friend'} -->
+        <!-- ko component: {
+            name: 'friend-details',
+            params: {
+               details: $data,
+               select: $parent.selectFriend,
+               activeSelection: $parent.selectedFriendId
+               }
+           }-->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
 
-<div class="login-button" data-bind="click: logout">Logout</div>
+
+
+
+    <div class="feed-list">
+        <!-- ko foreach: { data: feedList, as: 'feedItem' } -->
+            <!-- ko if: $data.story-->
+            <div class="feed-item" data-bind="text: story"></div>
+            <!-- /ko -->
+        <!-- /ko -->
+    </div>
+
+    <div class="login-button" data-bind="click: logout">Logout</div>
+</div>

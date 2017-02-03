@@ -9,6 +9,7 @@
     "html-loader": "^0.3.0",
     "imports-loader": "^0.6.4",
     "knockout": "^3.4.1",
+    "lodash": "^4.17.4",
     "webpack": "^1.9.12",
     "webpack-dev-server": "^1.16.3",
     "webpack-livereload-plugin": "^0.10.0"
